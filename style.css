@@ -38,21 +38,21 @@
 
 .display .primary-text {
     height: 70px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .display .secondary-text {
     height: 55px;
-    font-size: 20px;
+    font-size: 25px;
 }
 
-.erase {
+.erase-keys {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
 }
 
-button.erasers {
+button.erase-key {
     height: 68px;
     width: 174px;
     border: 1px solid black;
@@ -70,7 +70,7 @@ button#delete {
     background-color: rgba(78, 89, 192, 0.888);
 }
 
-.arithmetics {
+.calculator-keys {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

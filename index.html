@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Calculator</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <script src="main.js" defer"></script>
         <div class="main-body">
             <div class="sub-body">
                 <div class="display">
-                    <div class="secondary-text text">sec</div>
-                    <div class="primary-text text">pri</div>
+                    <div class="secondary-text text"></div>
+                    <div class="primary-text text"></div>
                 </div>
-                <div class="erase">
-                    <button id="clear" class="erasers">CLEAR</button>
-                    <button id="delete" class="erasers">DELETE</button>
+                <div class="erase-keys">
+                    <button id="clear" class="erase-key" data-action="clear">CLEAR</button>
+                    <button id="delete" class="erase-key" data-action="delete">DELETE</button>
                 </div>
-                <div class="arithmetics">
+                <div class="calculator-keys">
                     <button class="arithmetic">7</button>
                     <button class="arithmetic">8</button>
                     <button class="arithmetic">9</button>
-                    <button class="arithmetic">&#247;</button>
+                    <button class="arithmetic" data-action="divide">&#247;</button>
                     <button class="arithmetic">4</button>
                     <button class="arithmetic">5</button>
                     <button class="arithmetic">6</button>
-                    <button class="arithmetic">x</button>
+                    <button class="arithmetic" data-action="multiply">x</button>
                     <button class="arithmetic">1</button>
                     <button class="arithmetic">2</button>
                     <button class="arithmetic">3</button>
-                    <button class="arithmetic">-</button>
-                    <button class="arithmetic">.</button>
+                    <button class="arithmetic" data-action="subtract">-</button>
+                    <button class="arithmetic" data-action="decimal">.</button>
                     <button class="arithmetic">0</button>
-                    <button class="arithmetic">=</button>
-                    <button class="arithmetic">+</button>
+                    <button class="arithmetic" data-action="calculate">=</button>
+                    <button class="arithmetic" data-action="add">+</button>
                 </div>
             </div>
         </div>
+        <script src="main.js" defer"></script>
     </body>
 </html>
