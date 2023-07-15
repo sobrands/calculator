@@ -45,11 +45,6 @@ function addOperator(e, display)
     // If input only has negative sign so far
     if (displayPrimary.textContent === "-") return;
 
-    // Use subtract as negative sign
-    if (operator === "-" && !displayPrimary.textContent.includes("-")) {
-        displayPrimary.textContent += operator;
-        return;
-    }
     // Add number
     if (!operator_pressed) {
         if (displayPrimary.textContent === "" && displaySecondary.textContent === "") return;
@@ -117,6 +112,13 @@ function clearDisplay(e, display)
     }
 }
 
+function changeSign(display)
+{
+    const displayPrimary = display.querySelector(".primary-text");
+    if (displayPrimary.textContent.includes("-")) displayPrimary.textContent = displayPrimary.textContent.replace('-','');
+    else displayPrimary.textContent = "-" + displayPrimary.textContent;
+}
+
 function getResult(display)
 {
     const displayPrimary = display.querySelector(".primary-text");
@@ -146,17 +148,20 @@ const display = document.querySelector(".display");
 keys.addEventListener('click', e => {
     if (e.target.matches("button")) {
         if (e.target.dataset.action) {
-            if (e.target.dataset.action == "add" || e.target.dataset.action == "subtract" ||
-                e.target.dataset.action == "divide" || e.target.dataset.action == "multiply") {
+            if (e.target.dataset.action === "add" || e.target.dataset.action === "subtract" ||
+                e.target.dataset.action === "divide" || e.target.dataset.action === "multiply") {
                     addOperator(e, display);
             }
-            else if (e.target.dataset.action == "decimal") {
+            else if (e.target.dataset.action === "decimal") {
                 addNumeric(e, display);
             }
-            else if (e.target.dataset.action == "clear" || e.target.dataset.action == "delete") {
+            else if (e.target.dataset.action === "clear" || e.target.dataset.action === "delete") {
                 clearDisplay(e, display);
             }
-            else if (e.target.dataset.action == "calculate") {
+            else if (e.target.dataset.action === "change-sign") {
+                changeSign(display);
+            }
+            else if (e.target.dataset.action === "calculate") {
                 getResult(display);
             }
         }

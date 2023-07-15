@@ -59,7 +59,7 @@
     font-size: 35px;
 }
 
-.erase-keys {
+.function-keys {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
@@ -88,9 +88,14 @@ button#delete {
     background-color: var(--delete-button-color);
 }
 
-button.erase-key {
+button.function-key {
+    font-size: 18px;
     height: 68px;
-    width: 174px;
+    width: 82px;
+}
+
+button.erase-key {
+    width: 134px;
 }
 
 .calculator-keys {
