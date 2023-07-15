@@ -114,7 +114,6 @@ function clearDisplay(e, display)
 
 function changeSign(display)
 {
-    console.log("Changing sign");
     const displayPrimary = display.querySelector(".primary-text");
     if (displayPrimary.textContent.includes("-")) displayPrimary.textContent = displayPrimary.textContent.replace('-','');
     else displayPrimary.textContent = "-" + displayPrimary.textContent;
