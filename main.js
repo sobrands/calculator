@@ -9,9 +9,16 @@ function operate(num1, num2, operator)
     let res = 0;
     if (operator === "add") res = num1 + num2;
     if (operator === "subtract") res = num1 - num2;
-    if (operator === "divide") res = num1 / num2;
+    if (operator === "divide") {
+        if (num2 === 0) {
+            alert("You cannot divide by 0! :<");
+            return "void";
+        }
+        res = num1 / num2;
+    }
     if (operator === "multiply") res = num1 * num2;
 
+    if (!Number.isInteger(res)) res = Math.round(res * 100) / 100;
     return res;
 }
 
@@ -55,12 +62,15 @@ function addOperator(e, display)
         }
     }
     else {
+        // Check if second input present
+        if (displayPrimary.textContent === "") return;
         // Do previous operation first before updating operator
         if (displayPrimary.textContent.includes(".")) num2 = parseFloat(displayPrimary.textContent);
         else num2 = parseInt(displayPrimary.textContent);
         last_operator = operator_key;
         operator_key = e.target.dataset.action;
         let res = operate(num1, num2, last_operator);
+        if (res === "void") return;
 
         // Refresh display
         displaySecondary.textContent = `${res} ${operator}`;
@@ -104,9 +114,11 @@ function getResult(display)
     const displaySecondary = display.querySelector(".secondary-text");
     
     if (!operator_pressed) return;
+    if (displayPrimary.textContent === "") return;
     if (displayPrimary.textContent.includes(".")) num2 = parseFloat(displayPrimary.textContent);
     else num2 = parseInt(displayPrimary.textContent);
     let res = operate(num1, num2, operator_key);
+    if (res === "void") return;
 
     // Update display
     displaySecondary.textContent = res;
