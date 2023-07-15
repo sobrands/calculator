@@ -42,8 +42,17 @@ function addOperator(e, display)
     const displayPrimary = display.querySelector(".primary-text");
     const displaySecondary = display.querySelector(".secondary-text");
 
+    // If input only has negative sign so far
+    if (displayPrimary.textContent === "-") return;
+
+    // Use subtract as negative sign
+    if (operator === "-" && !displayPrimary.textContent.includes("-")) {
+        displayPrimary.textContent += operator;
+        return;
+    }
     // Add number
     if (!operator_pressed) {
+        if (displayPrimary.textContent === "" && displaySecondary.textContent === "") return;
         if (!displaySecondary.textContent) { // No prior calculated result
             // Parse display content into num1 
             if (displayPrimary.textContent.includes(".")) num1 = parseFloat(displayPrimary.textContent);
