@@ -37,19 +37,25 @@ function addOperator(e, display)
 
     // Add number
     if (!operator_pressed) {
-        if (!displaySecondary.textContent) {
+        if (!displaySecondary.textContent) { // No prior calculated result
+            // Parse display content into num1 
             if (displayPrimary.textContent.includes(".")) num1 = parseFloat(displayPrimary.textContent);
             else num1 = parseInt(displayPrimary.textContent);
+
+            // Update display
+            displaySecondary.textContent = `${num1} ${operator}`;
             operator_key = e.target.dataset.action;
             operator_pressed = true;
         }
         else {
+            // Update display only as previous result already num1
             displaySecondary.textContent += ` ${operator}`;
             operator_key = e.target.dataset.action;
             operator_pressed = true;
         }
     }
     else {
+        // Do previous operation first before updating operator
         if (displayPrimary.textContent.includes(".")) num2 = parseFloat(displayPrimary.textContent);
         else num2 = parseInt(displayPrimary.textContent);
         last_operator = operator_key;
@@ -62,10 +68,6 @@ function addOperator(e, display)
         // Reallocate numbers
         num1 = res;
     }
-
-    if (!displaySecondary.textContent) {
-        displaySecondary.textContent = `${displayPrimary.textContent} ${operator}`;
-    }
     displayPrimary.textContent = "";
 }
 
@@ -73,7 +75,7 @@ function clearDisplay(e, display)
 {
     const displayPrimary = display.querySelector(".primary-text");
     const displaySecondary = display.querySelector(".secondary-text");
-    if (e.target.dataset.action == "clear") {
+    if (e.target.dataset.action == "clear") { // Full reset
         num1 = 0;
         num2 = 0;
         operator_key = "";
@@ -82,7 +84,7 @@ function clearDisplay(e, display)
         displayPrimary.textContent = "";
         displaySecondary.textContent = "";
     }
-    else if (e.target.dataset.action == "delete") {
+    else if (e.target.dataset.action == "delete") { // Clear only recent input
         if (displayPrimary.textContent) {
             displayPrimary.textContent = "";
         }
